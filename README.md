@@ -10,6 +10,7 @@
 
 1. 添加依赖
    在app->build.gradle下：
+   
    `
        dependencies {
            ...
@@ -20,6 +21,7 @@
    `
 2. 注解变量
    在需要标注的变量添加注解 DescAnnotation
+   
    `
        @DescAnnotation(title = "test_str_one", desc = "我是第一个变量的描述")
        private String testStrOne = "test_str_one";
@@ -32,8 +34,8 @@
 	build->rebuild project
 
 4.查看文档
-
 	在项目根目录会生成 注解生成文档.txt，里边儿就是注解字段内容。
+	
      `
            test_str_one,我是第一个变量的描述
            test_str_two,我是第二个变量的描述
