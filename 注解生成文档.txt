@@ -1,0 +1,2 @@
+test_str_one,我是第一个变量的描述
+test_str_two,我是第二个变量的描述
