@@ -19,7 +19,8 @@ import java.io.PrintWriter;
  * Modify time：2020/7/17  1:31 PM
  */
 public class FileHelper {
-    private static String path = System.getProperty("user.dir")+"/";
+    public static String path = System.getProperty("user.dir") + "/annoationDoc/";
+    public static String name = "注解生成文档";
     private static String filenameTemp;
 
     /**
@@ -27,10 +28,17 @@ public class FileHelper {
      *
      * @throws IOException
      */
-    public static boolean creatTxtFile(String name) throws IOException {
+    public static boolean creatTxtFile() throws IOException {
         boolean flag = false;
+        File dir = new File(path);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
         filenameTemp = path + name + ".txt";
         File filename = new File(filenameTemp);
+        if (filename.exists()) {
+            filename.delete();
+        }
         if (!filename.exists()) {
             filename.createNewFile();
             flag = true;
@@ -104,5 +112,4 @@ public class FileHelper {
         }
         return flag;
     }
-
 }

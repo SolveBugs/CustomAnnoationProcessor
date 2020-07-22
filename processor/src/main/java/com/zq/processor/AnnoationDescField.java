@@ -39,7 +39,6 @@ public class AnnoationDescField {
         title = descAnnotation.title();
         desc = descAnnotation.desc();
         try {
-            FileHelper.creatTxtFile("注解生成文档");
             FileHelper.writeTxtFile(title + "," + desc);
         } catch (IOException e) {
             e.printStackTrace();

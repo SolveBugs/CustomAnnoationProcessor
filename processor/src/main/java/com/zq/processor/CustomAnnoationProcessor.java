@@ -2,7 +2,9 @@ package com.zq.processor;
 
 
 import com.zq.annoation.DescAnnotation;
+import com.zq.utils.FileHelper;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -43,11 +45,30 @@ public class CustomAnnoationProcessor extends AbstractProcessor {
      */
     private Map<String, AnnotatedClass> mAnnotatedClassMap = new HashMap<>();
 
+    private static final String docOutputPathKey = "docOutputPath";
+    private static final String docOutputNameKey = "docOutputName";
+
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
+        System.out.println("......CustomAnnoationProcessor.init......start");
         super.init(processingEnv);
         mElementUtils = processingEnv.getElementUtils();
         mMessager = processingEnv.getMessager();
+        Map<String, String> options = processingEnv.getOptions();
+        if (options != null) {
+            if (options.containsKey(docOutputPathKey)) {
+                FileHelper.path = options.get(docOutputPathKey);
+            }
+            if (options.containsKey(docOutputNameKey)) {
+                FileHelper.name = options.get(docOutputNameKey);
+            }
+        }
+        try {
+            FileHelper.creatTxtFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("......CustomAnnoationProcessor.init......end");
     }
 
     @Override
@@ -64,7 +85,7 @@ public class CustomAnnoationProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set annotations, RoundEnvironment roundEnv) {
-        mMessager.printMessage(Diagnostic.Kind.NOTE,"开始处理DescAnnotation注解......");
+        mMessager.printMessage(Diagnostic.Kind.NOTE, "开始处理DescAnnotation注解......");
         mAnnotatedClassMap.clear();
         try {
             processAnnoationDesc(roundEnv);

@@ -12,6 +12,13 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [docOutputPath: System.getProperty("user.dir") + "/annoationDoc/", docOutputName: '哈哈哈哈哈哈test']
+                classNames = ['com.zq.processor.CustomAnnoationProcessor']
+            }
+        }
     }
 
     buildTypes {
