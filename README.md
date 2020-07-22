@@ -49,7 +49,7 @@ dependencies {
     javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [docOutputPath: System.getProperty("user.dir") + "/annoationDoc/", docOutputName: 'eeee注解生成文档']
-                classNames = ['com.zhuanzhuan.module.processor.CustomAnnoationProcessor']
+                classNames = ['com.zq.processor.CustomAnnoationProcessor']
             }
         }
     ```
