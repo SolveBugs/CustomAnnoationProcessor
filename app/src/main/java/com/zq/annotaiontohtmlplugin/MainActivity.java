@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.zq.annoation.DescAnnotation;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @DescAnnotation(title = "test_str_one", desc = "我是第一个变量的描述")

@@ -2,7 +2,7 @@ apply plugin: 'java-library'
 apply plugin: "maven"
 
 dependencies {
-    implementation project(':annoation')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 sourceCompatibility = "1.7"
